@@ -3,14 +3,12 @@ FROM ubuntu:latest
 WORKDIR /app
 
 COPY requirements.txt /app
-COPY djnagoProj /app
+COPY djangoproj /app
 
 RUN apt-get update && \
-    apt-get install python3 python3-pip && \
+    apt-get install -y python3 python3-pip && \
     pip install -r requirements.txt && \
-    cd djnagoProj
+    cd djangoproj
 
-ENTRYPOINT [ "python3" ]
-
+ENTRYPOINT python3
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
-
